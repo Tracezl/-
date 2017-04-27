@@ -19,7 +19,7 @@ public class GameControl : MonoBehaviour {
     /// </summary>
     public int width;
     public int height;
-    public int timer = 3;
+    public int timer = 3;//次数
     public GameObject prefab;
     /// <summary>
     /// 游戏地图存储
@@ -71,6 +71,8 @@ public class GameControl : MonoBehaviour {
         //        transform.Translate(new Vector3(Input.touches[0].deltaPosition.x * Time.deltaTime, Input.touches[0].deltaPosition.y * Time.deltaTime, 0));
         //    }
         //}
+        //////////////////////////////////////射线检测//////////////////////////////////////
+        //安卓模式下的触屏检测
         if (Input.touchCount == 1 && isWin == false)
         {
             Touch touch = Input.touches[0];
@@ -79,14 +81,17 @@ public class GameControl : MonoBehaviour {
                 ray = mainCamera.ScreenPointToRay(Input.touches[0].position);
                 if (Physics.Raycast(ray, out hit, 100))
                 {
-                    int q = hit.collider.name.IndexOf("-");
-                    int x = int.Parse(hit.collider.name.Substring(0, q));
-                    int y = int.Parse(hit.collider.name.Substring(q + 1));
+                    string name = hit.collider.name;
+                    ///对射线碰撞的物体名字进行分析从而决定游戏逻辑
+                    int q = name.IndexOf("-");
+                    int x = int.Parse(name.Substring(0, q));
+                    int y = int.Parse(name.Substring(q + 1));
                     step += 1;
                     OnClick(x, y);
                 }
             }
         }
+        //PC模式下检测
         if (Input.GetMouseButtonDown(0) && isWin == false)
         {
             ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -99,7 +104,7 @@ public class GameControl : MonoBehaviour {
                 OnClick(x, y);
             }
         }
-
+        //游戏胜利
         if (black.Count == 0&&isWin==false)
         {
             text.gameObject.SetActive(true);

@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F760A11B-88C5-B5AA-1252-39717BA3D361}</ProjectGuid>
+    <ProjectGuid>{27EF7347-AC37-E872-47B1-34BCF3BB4247}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\GameControl.cs" />
      <Compile Include="Assets\LoadGame.cs" />
+     <Compile Include="Assets\SweepGameControl.cs" />
      <Compile Include="Assets\mInput.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>G:/UNITY5.6/Unity 5.6.0b3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
